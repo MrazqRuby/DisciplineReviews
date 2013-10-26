@@ -1,19 +1,50 @@
+
+
 ﻿@model DisciplineReviews.Models.Course
 
-<table>
-	<tr>
-		<td><h4>@Model.TotalRating</h4></td>
-	</tr>
-	<tr>
-		<td><h5>@Model.Helpfulness</h5></td>
-	</tr>
-	<tr>
-		<td><h5>@Model.Easiness</h5></td>
-	</tr>
-	<tr>
-		<td><h5>@Model.Interest</h5></td>
-	</tr>
-	<tr>
-		<td><h5>@Model.WorkLoad</h5></td>
-	</tr>
-</table>
+﻿<h1>Name of Course</h1> 
+<h2>Lecturer</h2>
+<div class="text-info">
+  <span class="label label-info">Credits:</span>
+  <span>5</span>
+  <span class="label label-info">Type:</span>
+  <span>OKN</span>
+</div>
+<table id= "rating-table">
+    <tr>
+        <td><h4>@Model.TotalRating</h4></td>
+        <td></td>     
+    </tr>
+    <tr>
+        <td><h5>@Model.Helpfulness</h5></td>
+        <td>
+          <div class="progress progress-info">
+          <div class="bar" style="width: 20%"></div>
+      </div>
+    </td>
+    </tr>
+    <tr>
+        <td><h5>@Model.Easiness</h5></td>
+         <td>
+          <div class="progress progress-info">
+          <div class="bar" style="width: 20%"></div>
+      </div>
+    </td>
+    </tr>
+    <tr>
+        <td><h5>@Model.Interest</h5></td>
+         <td>
+          <div class="progress progress-info">
+          <div class="bar" style="width: 20%"></div>
+      </div>
+    </td>
+    </tr>
+    <tr>
+        <td><h5>@Model.WorkLoad</h5></td>
+         <td>
+          <div class="progress progress-info">
+          <div class="bar" style="width: 20%"></div>
+      </div>
+    </td>
+    </tr>
+
