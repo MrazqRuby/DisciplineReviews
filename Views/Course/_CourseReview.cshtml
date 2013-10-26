@@ -1,6 +1,6 @@
 @model List<DisciplineReviews.CourseReview>
 <div class="well review-background-wrapper" >
-    <button class="btn pull-right btn-warning">Add review</button>
+    <button class="btn pull-right btn-warning addReview">Add review</button>
     @foreach(DisciplineReviews.CourseReview review in Model){
         <h3>@review.User.UserName</h3>
         <p>@review.Comment</p>
@@ -12,3 +12,16 @@
         </div>
     }
 </div>
+
+<script>
+	$(".addReview").on("click", function() {
+		$.ajax({
+			type: "POST",
+			url: "/Course/" ,
+			context:this,
+			success: function(msg){
+				$(this).parent().html(msg);
+			}
+		});
+	});		
+</script>

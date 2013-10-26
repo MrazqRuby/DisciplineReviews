@@ -19,7 +19,7 @@
 		console.log(attr);
 		$.ajax({
 			type: "POST",
-			url: "/Course/" ,
+			url: "/Course/" + attr ,
 			context:this,
 			success: function(msg){
 				$("#tab_content").html(msg);
