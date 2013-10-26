@@ -12,20 +12,15 @@ namespace DisciplineReviews.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
-        {
+        public ActionResult Index(){
             return View();
         }
 
         public ActionResult _Home(string page)
         {
-            //if (page == "page0")
-            //{
                 HomeModel model = new HomeModel();
                 model.top10courses = BusinessLogic.GetTop10Courses();
                 return PartialView(page, model);
-            //}
-            //return PartialView(page);
         }
 
         public ActionResult _Courses()
