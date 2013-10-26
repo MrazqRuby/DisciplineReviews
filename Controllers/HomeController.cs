@@ -27,5 +27,15 @@ namespace DisciplineReviews.Controllers
             //}
             //return PartialView(page);
         }
+
+        public ActionResult _Courses()
+        {
+            List<List<CourseOverview>> model = new List<List<CourseOverview>>();
+            List<CourseOverview> somecourses = BusinessLogic.GetTop10Courses();
+            List<CourseOverview> somemorecourses = BusinessLogic.GetTop10Courses();
+            model.Add(somecourses);
+            model.Add(somemorecourses);
+            return PartialView("_Courses",model);
+        }
     }
 }
