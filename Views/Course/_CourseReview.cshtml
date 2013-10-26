@@ -17,7 +17,7 @@
 	$(".addReview").on("click", function() {
 		$.ajax({
 			type: "POST",
-			url: "/Course/" ,
+			url: /* add_review_name */,
 			context:this,
 			success: function(msg){
 				$(this).parent().html(msg);
