@@ -7,13 +7,12 @@ $(document).ready(function(){
             $(this).addClass("active"); 
             checkURL(this.hash);
     });
-    default_content = $('#container').html();   
-    setInterval("checkURL()",250);
+    default_content = $('#container').html();
+    setInterval(checkURL(hash));
 });
     var lasturl="";
 function checkURL(hash)
 {
-    //console.log("what the fuck");
     if(!hash) hash=window.location.hash;
     if(hash != lasturl)
     {
@@ -33,12 +32,11 @@ function loadPage(url){
     url=url.replace("#","");
     $.ajax({
         type: "POST",
-        url: "/Home/Load_Page",
+        url: "/Home/" + url,
         data: "page="+url,
         dataType: "html",
         success: function(msg){
             if(parseInt(msg)!=0){
-                // console.log(msg);
                 $("#main_content").html(msg);
             }
         }
