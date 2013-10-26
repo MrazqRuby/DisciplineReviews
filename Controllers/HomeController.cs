@@ -35,7 +35,12 @@ namespace DisciplineReviews.Controllers
             List<CourseOverview> somemorecourses = BusinessLogic.GetTop10Courses();
             model.Add(somecourses);
             model.Add(somemorecourses);
-            return PartialView("_Courses",model);
+            return PartialView("_Courses", model);
+        }
+
+        public ActionResult _SingleCourse(CourseOverview model)
+        {
+            return PartialView("_SingleCourse", model);
         }
     }
 }

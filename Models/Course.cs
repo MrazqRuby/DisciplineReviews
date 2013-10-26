@@ -7,6 +7,7 @@ namespace DisciplineReviews.Models
 {
     public class Course
     {
+        public int Id { get; set; }
         public string CourseName { get; set; }
         public string LecturerName { get; set; }
         public decimal TotalRating { get; set; }

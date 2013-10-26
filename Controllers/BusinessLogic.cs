@@ -42,6 +42,11 @@ namespace DisciplineReviews.Controllers
             courses[9].Credits = 2;
             courses[9].Lecturer = "Babev";
             courses[9].Type = "Zadaljitelna";
+            for (int i = 0; i < 10; i++)
+            {
+                courses[i].Name = "Analiz 1";
+                courses[i].Id = 3;
+            }
             return courses;
         }
         static public Course GetCourse(int id){

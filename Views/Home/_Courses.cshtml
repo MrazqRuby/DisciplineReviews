@@ -4,26 +4,20 @@
 {
     <ul class="unstyled">
         <li>
-            <button class="btn btn-inverse courses-pulldown-button" type="button">@courses[0].Type</button>
-            <ul>
+            <button class="btn btn-inverse courses-pulldown-button showCourses" type="button">@courses[0].Type</button>
+            <ul class="hide-courses unstyled">
                 <li>
                     @foreach(DisciplineReviews.Models.CourseOverview courseoverview in courses){
-                        <button class="btn btn-link courses-pulldown-button" type="button">@courseoverview.Name</button>
-                        <ul>
-                            <li>
-                                <div class="text-info">
-                                    <span class="label label-info">Credits:</span>
-                                    <span>@courseoverview.Credits</span>
-                                    <span class="label label-info">Type:</span>
-                                    <span>@courseoverview.Type</span>
-                                </div>
-                                <button class="btn btn-link courses-pulldown-button" type="button">Go</button>
-
-                            </li>
-                        </ul>
+                        @Html.Action("_SingleCourse", courseoverview);
                     }
                 </li>
             </ul>
         </li>
     </ul>
 }
+
+  <script>
+    $(".showCourses").on("click",function(){
+           $(this).next("ul").slideToggle();
+        });
+    </script>

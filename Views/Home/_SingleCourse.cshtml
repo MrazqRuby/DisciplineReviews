@@ -1,0 +1,14 @@
+﻿@model DisciplineReviews.Models.CourseOverview
+
+<button class="btn btn-link courses-pulldown-button showCourses" type="button">@Model.Name</button>
+<ul class="hide-courses unstyled">
+    <li>
+        <div class="text-info">
+            <span class="label label-info">Credits:</span>
+            <span>@Model.Credits</span>
+            <span class="label label-info">Type:</span>
+            <span>@Model.Type</span>
+        </div>
+        <button class="btn btn-link courses-pulldown-button" type="button">Go</button>
+    </li>
+</ul>
