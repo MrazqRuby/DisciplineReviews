@@ -231,6 +231,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Home.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Home\_CourseInfoPartial.cshtml" />
+    <Content Include="Views\Home\_Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

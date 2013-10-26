@@ -15,7 +15,7 @@ namespace DisciplineReviews.Controllers
         public ActionResult Index(int id)
         {
             Course course = new Course();
-            return View();
+            return View(course);
         }
 
     }
