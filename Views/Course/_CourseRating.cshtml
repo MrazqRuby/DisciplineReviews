@@ -1,14 +1,11 @@
-
-
-﻿@model DisciplineReviews.Models.Course
-
-﻿<h1>Name of Course</h1> 
-<h2>Lecturer</h2>
+@model DisciplineReviews.Models.Course
+<h1>@Model.CourseName</h1> 
+<h2>@Model.LecturerName</h2>
 <div class="text-info">
   <span class="label label-info">Credits:</span>
-  <span>5</span>
+  <span>@Model.Credits</span>
   <span class="label label-info">Type:</span>
-  <span>OKN</span>
+  <span>@Model.Type</span>
 </div>
 <table id= "rating-table">
     <tr>
@@ -47,4 +44,4 @@
       </div>
     </td>
     </tr>
-
+</table>

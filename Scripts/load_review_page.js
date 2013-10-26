@@ -20,7 +20,7 @@ $(".go-button").on("click", function(){
             courseId: courseID
         },
         success: function(msg){
-            $("№main_content").html(msg);
+            $("#main_content").html(msg);
         }
     });
              
