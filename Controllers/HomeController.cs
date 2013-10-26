@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DisciplineReviews.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,9 +17,15 @@ namespace DisciplineReviews.Controllers
             return View();
         }
 
-        public ActionResult Load_Page(string page)
+        public ActionResult _Home(string page)
         {
-            return PartialView(page);
+            //if (page == "page0")
+            //{
+                HomeModel model = new HomeModel();
+                model.top10courses = BusinessLogic.GetTop10Courses();
+                return PartialView(page, model);
+            //}
+            //return PartialView(page);
         }
     }
 }
