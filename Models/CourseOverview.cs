@@ -12,5 +12,6 @@ namespace DisciplineReviews.Models
         public decimal Credits { get; set; }
         public string Lecturer { get; set; }
         public string Type { get; set; }
+        public decimal Rating { get; set; }
     }
 }

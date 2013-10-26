@@ -12,11 +12,6 @@ namespace DisciplineReviews.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult _Home(string page)
         {
             //if (page == "page0")

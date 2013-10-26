@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DisciplineReviewsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DisciplineReviewsModelStoreContainer">
+          <EntitySet Name="CourseReviews" EntityType="DisciplineReviewsModel.Store.CourseReviews" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Courses" EntityType="DisciplineReviewsModel.Store.Courses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CoursesToTeachers" EntityType="DisciplineReviewsModel.Store.CoursesToTeachers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CoursesToUsers" EntityType="DisciplineReviewsModel.Store.CoursesToUsers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Disciplines" EntityType="DisciplineReviewsModel.Store.Disciplines" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TeacherReviews" EntityType="DisciplineReviewsModel.Store.TeacherReviews" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Teachers" EntityType="DisciplineReviewsModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Types" EntityType="DisciplineReviewsModel.Store.Types" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="DisciplineReviewsModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CourseReviews_Courses" Association="DisciplineReviewsModel.Store.FK_CourseReviews_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseReviews" EntitySet="CourseReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseReviews_Users" Association="DisciplineReviewsModel.Store.FK_CourseReviews_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CourseReviews" EntitySet="CourseReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Disciplines" Association="DisciplineReviewsModel.Store.FK_Courses_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Teachers" Association="DisciplineReviewsModel.Store.FK_Courses_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToTeachers_Courses" Association="DisciplineReviewsModel.Store.FK_CoursesToTeachers_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CoursesToTeachers" EntitySet="CoursesToTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToTeachers_Teachers" Association="DisciplineReviewsModel.Store.FK_CoursesToTeachers_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="CoursesToTeachers" EntitySet="CoursesToTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToUsers_Courses" Association="DisciplineReviewsModel.Store.FK_CoursesToUsers_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CoursesToUsers" EntitySet="CoursesToUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToUsers_Users" Association="DisciplineReviewsModel.Store.FK_CoursesToUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CoursesToUsers" EntitySet="CoursesToUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disciplines_Types" Association="DisciplineReviewsModel.Store.FK_Disciplines_Types">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Disciplines" EntitySet="Disciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherReviews_Teachers" Association="DisciplineReviewsModel.Store.FK_TeacherReviews_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TeacherReviews" EntitySet="TeacherReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Users" Association="DisciplineReviewsModel.Store.FK_Teachers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CourseReviews">
+          <Key>
+            <PropertyRef Name="CourseReviewID" />
+          </Key>
+          <Property Name="CourseReviewID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Easyness" Type="int" />
+          <Property Name="Interests" Type="int" />
+          <Property Name="Clarity" Type="int" />
+          <Property Name="Usability" Type="int" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="CourseUp" Type="int" Nullable="false" />
+          <Property Name="CourseDown" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DisciplineID" Type="int" Nullable="false" />
+          <Property Name="LeaderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoursesToTeachers">
+          <Key>
+            <PropertyRef Name="CourseToTeacherID" />
+          </Key>
+          <Property Name="CourseToTeacherID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoursesToUsers">
+          <Key>
+            <PropertyRef Name="CourseToUserID" />
+          </Key>
+          <Property Name="CourseToUserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disciplines">
+          <Key>
+            <PropertyRef Name="DisciplineID" />
+          </Key>
+          <Property Name="DisciplineID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DisciplineName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="DisciplineCredits" Type="decimal" Nullable="false" Precision="3" Scale="1" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherReviews">
+          <Key>
+            <PropertyRef Name="TeacherReviewID" />
+          </Key>
+          <Property Name="TeacherReviewID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherID" Type="int" Nullable="false" />
+          <Property Name="TeacherUp" Type="int" Nullable="false" />
+          <Property Name="TeacherDown" Type="int" Nullable="false" />
+          <Property Name="Clarity" Type="int" Nullable="false" />
+          <Property Name="Criteria" Type="int" Nullable="false" />
+          <Property Name="Speed" Type="int" Nullable="false" />
+          <Property Name="Material" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FacNumber" Type="int" />
+        </EntityType>
+        <Association Name="FK_CourseReviews_Courses">
+          <End Role="Courses" Type="DisciplineReviewsModel.Store.Courses" Multiplicity="1" />
+          <End Role="CourseReviews" Type="DisciplineReviewsModel.Store.CourseReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseReviews">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseReviews_Users">
+          <End Role="Users" Type="DisciplineReviewsModel.Store.Users" Multiplicity="1" />
+          <End Role="CourseReviews" Type="DisciplineReviewsModel.Store.CourseReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CourseReviews">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Disciplines">
+          <End Role="Disciplines" Type="DisciplineReviewsModel.Store.Disciplines" Multiplicity="1" />
+          <End Role="Courses" Type="DisciplineReviewsModel.Store.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="DisciplineID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="DisciplineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Teachers">
+          <End Role="Teachers" Type="DisciplineReviewsModel.Store.Teachers" Multiplicity="1" />
+          <End Role="Courses" Type="DisciplineReviewsModel.Store.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="LeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToTeachers_Courses">
+          <End Role="Courses" Type="DisciplineReviewsModel.Store.Courses" Multiplicity="1" />
+          <End Role="CoursesToTeachers" Type="DisciplineReviewsModel.Store.CoursesToTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CoursesToTeachers">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToTeachers_Teachers">
+          <End Role="Teachers" Type="DisciplineReviewsModel.Store.Teachers" Multiplicity="1" />
+          <End Role="CoursesToTeachers" Type="DisciplineReviewsModel.Store.CoursesToTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="CoursesToTeachers">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToUsers_Courses">
+          <End Role="Courses" Type="DisciplineReviewsModel.Store.Courses" Multiplicity="1" />
+          <End Role="CoursesToUsers" Type="DisciplineReviewsModel.Store.CoursesToUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CoursesToUsers">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToUsers_Users">
+          <End Role="Users" Type="DisciplineReviewsModel.Store.Users" Multiplicity="1" />
+          <End Role="CoursesToUsers" Type="DisciplineReviewsModel.Store.CoursesToUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CoursesToUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disciplines_Types">
+          <End Role="Types" Type="DisciplineReviewsModel.Store.Types" Multiplicity="1" />
+          <End Role="Disciplines" Type="DisciplineReviewsModel.Store.Disciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Disciplines">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherReviews_Teachers">
+          <End Role="Teachers" Type="DisciplineReviewsModel.Store.Teachers" Multiplicity="1" />
+          <End Role="TeacherReviews" Type="DisciplineReviewsModel.Store.TeacherReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="TeacherReviews">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teachers_Users">
+          <End Role="Users" Type="DisciplineReviewsModel.Store.Users" Multiplicity="0..1" />
+          <End Role="Teachers" Type="DisciplineReviewsModel.Store.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DisciplineReviewsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DisciplineReviewsEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CourseReviews" EntityType="DisciplineReviewsModel.CourseReview" />
+          <EntitySet Name="Courses" EntityType="DisciplineReviewsModel.Cours" />
+          <EntitySet Name="CoursesToTeachers" EntityType="DisciplineReviewsModel.CoursesToTeacher" />
+          <EntitySet Name="CoursesToUsers" EntityType="DisciplineReviewsModel.CoursesToUser" />
+          <EntitySet Name="Disciplines" EntityType="DisciplineReviewsModel.Discipline" />
+          <EntitySet Name="TeacherReviews" EntityType="DisciplineReviewsModel.TeacherReview" />
+          <EntitySet Name="Teachers" EntityType="DisciplineReviewsModel.Teacher" />
+          <EntitySet Name="Types" EntityType="DisciplineReviewsModel.Type" />
+          <EntitySet Name="Users" EntityType="DisciplineReviewsModel.User" />
+          <AssociationSet Name="FK_CourseReviews_Courses" Association="DisciplineReviewsModel.FK_CourseReviews_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseReviews" EntitySet="CourseReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseReviews_Users" Association="DisciplineReviewsModel.FK_CourseReviews_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CourseReviews" EntitySet="CourseReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Disciplines" Association="DisciplineReviewsModel.FK_Courses_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Teachers" Association="DisciplineReviewsModel.FK_Courses_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToTeachers_Courses" Association="DisciplineReviewsModel.FK_CoursesToTeachers_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CoursesToTeachers" EntitySet="CoursesToTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToUsers_Courses" Association="DisciplineReviewsModel.FK_CoursesToUsers_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CoursesToUsers" EntitySet="CoursesToUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToTeachers_Teachers" Association="DisciplineReviewsModel.FK_CoursesToTeachers_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="CoursesToTeachers" EntitySet="CoursesToTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursesToUsers_Users" Association="DisciplineReviewsModel.FK_CoursesToUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CoursesToUsers" EntitySet="CoursesToUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disciplines_Types" Association="DisciplineReviewsModel.FK_Disciplines_Types">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Disciplines" EntitySet="Disciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherReviews_Teachers" Association="DisciplineReviewsModel.FK_TeacherReviews_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TeacherReviews" EntitySet="TeacherReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Users" Association="DisciplineReviewsModel.FK_Teachers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CourseReview">
+          <Key>
+            <PropertyRef Name="CourseReviewID" />
+          </Key>
+          <Property Name="CourseReviewID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Easyness" Type="Int32" />
+          <Property Name="Interests" Type="Int32" />
+          <Property Name="Clarity" Type="Int32" />
+          <Property Name="Usability" Type="Int32" />
+          <Property Name="Grade" Type="Int32" />
+          <Property Name="CourseUp" Type="Int32" Nullable="false" />
+          <Property Name="CourseDown" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="DisciplineReviewsModel.FK_CourseReviews_Courses" FromRole="CourseReviews" ToRole="Courses" />
+          <NavigationProperty Name="User" Relationship="DisciplineReviewsModel.FK_CourseReviews_Users" FromRole="CourseReviews" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DisciplineID" Type="Int32" Nullable="false" />
+          <Property Name="LeaderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseReviews" Relationship="DisciplineReviewsModel.FK_CourseReviews_Courses" FromRole="Courses" ToRole="CourseReviews" />
+          <NavigationProperty Name="Discipline" Relationship="DisciplineReviewsModel.FK_Courses_Disciplines" FromRole="Courses" ToRole="Disciplines" />
+          <NavigationProperty Name="Teacher" Relationship="DisciplineReviewsModel.FK_Courses_Teachers" FromRole="Courses" ToRole="Teachers" />
+          <NavigationProperty Name="CoursesToTeachers" Relationship="DisciplineReviewsModel.FK_CoursesToTeachers_Courses" FromRole="Courses" ToRole="CoursesToTeachers" />
+          <NavigationProperty Name="CoursesToUsers" Relationship="DisciplineReviewsModel.FK_CoursesToUsers_Courses" FromRole="Courses" ToRole="CoursesToUsers" />
+        </EntityType>
+        <EntityType Name="CoursesToTeacher">
+          <Key>
+            <PropertyRef Name="CourseToTeacherID" />
+          </Key>
+          <Property Name="CourseToTeacherID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="DisciplineReviewsModel.FK_CoursesToTeachers_Courses" FromRole="CoursesToTeachers" ToRole="Courses" />
+          <NavigationProperty Name="Teacher" Relationship="DisciplineReviewsModel.FK_CoursesToTeachers_Teachers" FromRole="CoursesToTeachers" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="CoursesToUser">
+          <Key>
+            <PropertyRef Name="CourseToUserID" />
+          </Key>
+          <Property Name="CourseToUserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="DisciplineReviewsModel.FK_CoursesToUsers_Courses" FromRole="CoursesToUsers" ToRole="Courses" />
+          <NavigationProperty Name="User" Relationship="DisciplineReviewsModel.FK_CoursesToUsers_Users" FromRole="CoursesToUsers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="DisciplineID" />
+          </Key>
+          <Property Name="DisciplineID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DisciplineName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DisciplineCredits" Type="Decimal" Nullable="false" Precision="3" Scale="1" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="DisciplineReviewsModel.FK_Courses_Disciplines" FromRole="Disciplines" ToRole="Courses" />
+          <NavigationProperty Name="Type" Relationship="DisciplineReviewsModel.FK_Disciplines_Types" FromRole="Disciplines" ToRole="Types" />
+        </EntityType>
+        <EntityType Name="TeacherReview">
+          <Key>
+            <PropertyRef Name="TeacherReviewID" />
+          </Key>
+          <Property Name="TeacherReviewID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherID" Type="Int32" Nullable="false" />
+          <Property Name="TeacherUp" Type="Int32" Nullable="false" />
+          <Property Name="TeacherDown" Type="Int32" Nullable="false" />
+          <Property Name="Clarity" Type="Int32" Nullable="false" />
+          <Property Name="Criteria" Type="Int32" Nullable="false" />
+          <Property Name="Speed" Type="Int32" Nullable="false" />
+          <Property Name="Material" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Teacher" Relationship="DisciplineReviewsModel.FK_TeacherReviews_Teachers" FromRole="TeacherReviews" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Courses" Relationship="DisciplineReviewsModel.FK_Courses_Teachers" FromRole="Teachers" ToRole="Courses" />
+          <NavigationProperty Name="CoursesToTeachers" Relationship="DisciplineReviewsModel.FK_CoursesToTeachers_Teachers" FromRole="Teachers" ToRole="CoursesToTeachers" />
+          <NavigationProperty Name="TeacherReviews" Relationship="DisciplineReviewsModel.FK_TeacherReviews_Teachers" FromRole="Teachers" ToRole="TeacherReviews" />
+          <NavigationProperty Name="User" Relationship="DisciplineReviewsModel.FK_Teachers_Users" FromRole="Teachers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Disciplines" Relationship="DisciplineReviewsModel.FK_Disciplines_Types" FromRole="Types" ToRole="Disciplines" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FacNumber" Type="Int32" />
+          <NavigationProperty Name="CourseReviews" Relationship="DisciplineReviewsModel.FK_CourseReviews_Users" FromRole="Users" ToRole="CourseReviews" />
+          <NavigationProperty Name="CoursesToUsers" Relationship="DisciplineReviewsModel.FK_CoursesToUsers_Users" FromRole="Users" ToRole="CoursesToUsers" />
+          <NavigationProperty Name="Teachers" Relationship="DisciplineReviewsModel.FK_Teachers_Users" FromRole="Users" ToRole="Teachers" />
+        </EntityType>
+        <Association Name="FK_CourseReviews_Courses">
+          <End Role="Courses" Type="DisciplineReviewsModel.Cours" Multiplicity="1" />
+          <End Role="CourseReviews" Type="DisciplineReviewsModel.CourseReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseReviews">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseReviews_Users">
+          <End Role="Users" Type="DisciplineReviewsModel.User" Multiplicity="1" />
+          <End Role="CourseReviews" Type="DisciplineReviewsModel.CourseReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CourseReviews">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Disciplines">
+          <End Role="Disciplines" Type="DisciplineReviewsModel.Discipline" Multiplicity="1" />
+          <End Role="Courses" Type="DisciplineReviewsModel.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="DisciplineID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="DisciplineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Teachers">
+          <End Role="Teachers" Type="DisciplineReviewsModel.Teacher" Multiplicity="1" />
+          <End Role="Courses" Type="DisciplineReviewsModel.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="LeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToTeachers_Courses">
+          <End Role="Courses" Type="DisciplineReviewsModel.Cours" Multiplicity="1" />
+          <End Role="CoursesToTeachers" Type="DisciplineReviewsModel.CoursesToTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CoursesToTeachers">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToUsers_Courses">
+          <End Role="Courses" Type="DisciplineReviewsModel.Cours" Multiplicity="1" />
+          <End Role="CoursesToUsers" Type="DisciplineReviewsModel.CoursesToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CoursesToUsers">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToTeachers_Teachers">
+          <End Role="Teachers" Type="DisciplineReviewsModel.Teacher" Multiplicity="1" />
+          <End Role="CoursesToTeachers" Type="DisciplineReviewsModel.CoursesToTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="CoursesToTeachers">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursesToUsers_Users">
+          <End Role="Users" Type="DisciplineReviewsModel.User" Multiplicity="1" />
+          <End Role="CoursesToUsers" Type="DisciplineReviewsModel.CoursesToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CoursesToUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disciplines_Types">
+          <End Role="Types" Type="DisciplineReviewsModel.Type" Multiplicity="1" />
+          <End Role="Disciplines" Type="DisciplineReviewsModel.Discipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Disciplines">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherReviews_Teachers">
+          <End Role="Teachers" Type="DisciplineReviewsModel.Teacher" Multiplicity="1" />
+          <End Role="TeacherReviews" Type="DisciplineReviewsModel.TeacherReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="TeacherReviews">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teachers_Users">
+          <End Role="Users" Type="DisciplineReviewsModel.User" Multiplicity="0..1" />
+          <End Role="Teachers" Type="DisciplineReviewsModel.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DisciplineReviewsModelStoreContainer" CdmEntityContainer="DisciplineReviewsEntities">
+          <EntitySetMapping Name="CourseReviews">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.CourseReview">
+              <MappingFragment StoreEntitySet="CourseReviews">
+                <ScalarProperty Name="CourseReviewID" ColumnName="CourseReviewID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Easyness" ColumnName="Easyness" />
+                <ScalarProperty Name="Interests" ColumnName="Interests" />
+                <ScalarProperty Name="Clarity" ColumnName="Clarity" />
+                <ScalarProperty Name="Usability" ColumnName="Usability" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="CourseUp" ColumnName="CourseUp" />
+                <ScalarProperty Name="CourseDown" ColumnName="CourseDown" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+                <ScalarProperty Name="LeaderID" ColumnName="LeaderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoursesToTeachers">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.CoursesToTeacher">
+              <MappingFragment StoreEntitySet="CoursesToTeachers">
+                <ScalarProperty Name="CourseToTeacherID" ColumnName="CourseToTeacherID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoursesToUsers">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.CoursesToUser">
+              <MappingFragment StoreEntitySet="CoursesToUsers">
+                <ScalarProperty Name="CourseToUserID" ColumnName="CourseToUserID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplines">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.Discipline">
+              <MappingFragment StoreEntitySet="Disciplines">
+                <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+                <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+                <ScalarProperty Name="DisciplineCredits" ColumnName="DisciplineCredits" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherReviews">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.TeacherReview">
+              <MappingFragment StoreEntitySet="TeacherReviews">
+                <ScalarProperty Name="TeacherReviewID" ColumnName="TeacherReviewID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="TeacherUp" ColumnName="TeacherUp" />
+                <ScalarProperty Name="TeacherDown" ColumnName="TeacherDown" />
+                <ScalarProperty Name="Clarity" ColumnName="Clarity" />
+                <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.Type">
+              <MappingFragment StoreEntitySet="Types">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DisciplineReviewsModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FacNumber" ColumnName="FacNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
