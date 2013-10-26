@@ -22,5 +22,8 @@ namespace DisciplineReviews.Models
 
         public decimal AvgGrade { get; set; }
 
+        public decimal Credits { get; set; }
+        public string Type { get; set; }
+
     }
 }

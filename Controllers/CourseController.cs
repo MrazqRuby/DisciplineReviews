@@ -17,19 +17,16 @@ namespace DisciplineReviews.Controllers
             Course course = new Course();
             return View(course);
         }
-        public ActionResult _CourseView(int id)
+
+        public ActionResult _CourseRating(int courseid)
         {
-            Course model = BusinessLogic.GetCourse(id);
+            Course model = BusinessLogic.GetCourse(courseid);
             return PartialView(model);
         }
 
-        public ActionResult _CourseRating(Course model)
+        public ActionResult _CourseBody(int courseid)
         {
-            return PartialView(model);
-        }
-
-        public ActionResult _CourseBody(Course model)
-        {
+            Course model = BusinessLogic.GetCourse(courseid);
             return PartialView(model);
         }
 

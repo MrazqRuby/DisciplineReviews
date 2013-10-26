@@ -61,6 +61,8 @@ namespace DisciplineReviews.Controllers
                 Id = id,
                 CourseName = "Анализ 1",
                 LecturerName = "Бабев",
+                Type = "Задължителна",
+                Credits = 8,
                 TotalRating = ((1.5M + 3.4M + 4.3M + 5M) / 4),
                 AvgGrade = 3.2M
             };
