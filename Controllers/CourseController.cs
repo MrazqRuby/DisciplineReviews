@@ -35,9 +35,18 @@ namespace DisciplineReviews.Controllers
             return PartialView(model);
         }
 
-        public ActionResult _CourseReview(Course model)
+        public ActionResult _CourseReview(int courseid)
         {
-            return PartialView(model);
+            List<DisciplineReviews.CourseReview> reviews = new List<CourseReview>(5);
+            for (int i = 0; i < 5; i++)
+            {
+                DisciplineReviews.CourseReview review = new CourseReview();
+                review.User = new User();
+                review.User.UserName = "Саламчо";
+                review.Comment = "Страхотен курс, Бабев говори с ентусиазъм, изпита е лесен и асистентите винаги ти помагат. Единственият проблем е, че на единият малко не се разбира какво приказва.";
+                reviews.Add(review);
+            }
+            return PartialView(reviews);
         }
     }
 }

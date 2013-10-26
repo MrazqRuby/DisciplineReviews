@@ -12,19 +12,17 @@ namespace DisciplineReviews.Controllers
 
         static public List<CourseOverview> GetTop10Courses()
         {
-            //List<CourseOverview> courses = new List<CourseOverview>(10);
-            //for(int i = 0; i < 10; i++) courses.Add(new CourseOverview());
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    courses[i].Name = "Analiz 1";
-            //    courses[i].Id = 3;
-            //    courses[i].Credits = 2;
-            //    courses[i].Lecturer = "Babev";
-            //    courses[i].Type = "Zadaljitelna";
-            //}
-            var a = (from course in context.Courses
-                     select course.CourseReviews.All(c => true)
-                         );
+            List<CourseOverview> courses = new List<CourseOverview>(10);
+            for (int i = 0; i < 10; i++) courses.Add(new CourseOverview());
+            for (int i = 0; i < 10; i++)
+            {
+                courses[i].Name = "Analiz 1";
+                courses[i].Id = 3;
+                courses[i].Credits = 2;
+                courses[i].Lecturer = "Babev";
+                courses[i].Type = "Zadaljitelna";
+            }
+            
 
 
             return courses;
