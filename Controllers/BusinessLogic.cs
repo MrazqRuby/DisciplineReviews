@@ -17,7 +17,7 @@ namespace DisciplineReviews.Controllers
             for (int i = 0; i < 10; i++)
             {
                 courses[i].Name = "Analiz 1";
-                courses[i].Id = 3;
+                courses[i].Id = 1;
                 courses[i].Credits = 2;
                 courses[i].Lecturer = "Babev";
                 courses[i].Type = "Zadaljitelna";
@@ -48,5 +48,10 @@ namespace DisciplineReviews.Controllers
             return retval;
         }
 
+        static public List<CourseReview> GetReviews (int id)
+        {
+            var reviews = context.Courses.Single(c => c.CourseID == id).CourseReviews.ToList();
+            return reviews;
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace DisciplineReviews
         public Nullable<int> Grade { get; set; }
         public int CourseUp { get; set; }
         public int CourseDown { get; set; }
+        public int Workload { get; set; }
     
         public virtual Cours Cours { get; set; }
         public virtual User User { get; set; }

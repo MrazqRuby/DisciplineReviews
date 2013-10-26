@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DisciplineReviewsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DisciplineReviewsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DisciplineReviewsModelStoreContainer">
           <EntitySet Name="CourseReviews" EntityType="DisciplineReviewsModel.Store.CourseReviews" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Courses" EntityType="DisciplineReviewsModel.Store.Courses" store:Type="Tables" Schema="dbo" />
@@ -73,7 +73,8 @@
           <Property Name="Interests" Type="int" />
           <Property Name="Clarity" Type="int" />
           <Property Name="Usability" Type="int" />
-          <Property Name="Grade" Type="int" />
+          <Property Name="Workload" Type="int" Nullable="false" />
+          <Property Name="Grade" Type="decimal" Precision="3" Scale="1" />
           <Property Name="CourseUp" Type="int" Nullable="false" />
           <Property Name="CourseDown" Type="int" Nullable="false" />
         </EntityType>
@@ -280,8 +281,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DisciplineReviewsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -358,6 +358,7 @@
           <Property Name="CourseDown" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cours" Relationship="DisciplineReviewsModel.FK_CourseReviews_Courses" FromRole="CourseReviews" ToRole="Courses" />
           <NavigationProperty Name="User" Relationship="DisciplineReviewsModel.FK_CourseReviews_Users" FromRole="CourseReviews" ToRole="Users" />
+          <Property Type="Int32" Name="Workload" Nullable="false" />
         </EntityType>
         <EntityType Name="Cours">
           <Key>
@@ -591,6 +592,7 @@
           <EntitySetMapping Name="CourseReviews">
             <EntityTypeMapping TypeName="DisciplineReviewsModel.CourseReview">
               <MappingFragment StoreEntitySet="CourseReviews">
+                <ScalarProperty Name="Workload" ColumnName="Workload" />
                 <ScalarProperty Name="CourseReviewID" ColumnName="CourseReviewID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
