@@ -230,9 +230,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Home.cshtml" />
-    <Content Include="Views\Course\Index.cshtml" />
-    <Content Include="Views\Home\_CourseInfoPartial.cshtml" />
+    <Content Include="Views\Course\_CourseOverview.cshtml" />
     <Content Include="Views\Home\_Courses.cshtml" />
+    <Content Include="Views\Home\_SingleCourse.cshtml" />
+    <Content Include="Views\Course\_CourseView.cshtml" />
+    <Content Include="Views\Course\_CourseRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
