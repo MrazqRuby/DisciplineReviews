@@ -1,6 +1,6 @@
 @import url("bootstrap.min.css");
 @import url("bootstrap-responsive.min.css");
-@import url("united.min.css");
+/*@import url("united.min.css");*/
 
 .navbar-inner,
 .nav,
@@ -61,4 +61,15 @@ nav
 .hide-courses
 {
 	display: none;
+}
+
+.table-rating textarea
+{
+   resize: none;
+   width: 100%;
+}
+
+.table-rating td
+{
+	height: 30px;
 }
