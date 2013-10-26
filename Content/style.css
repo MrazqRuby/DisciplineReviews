@@ -9,6 +9,7 @@ nav
 	height: 42px;
 }
 
+#rating-table,
 .search-bar
 {
 	float: right;
@@ -17,4 +18,36 @@ nav
 .hero-unit
 {
 	margin-top: 10px;
+}
+
+#rating-table
+{
+	margin-top: -190px;
+	width: 200px;
+    height: 200px;
+}
+
+#rating-table td
+{
+	width: 96px;
+	height: 20px;
+	padding: 2px;
+}
+
+.progress
+{
+	margin: 0;
+}
+
+.type-class
+{
+	margin-left: 30px;
+}
+
+.courses-pulldown-button
+{
+	width:  100%;
+	border-width: 0;
+	text-align: left;
+	margin: 0;
 }
