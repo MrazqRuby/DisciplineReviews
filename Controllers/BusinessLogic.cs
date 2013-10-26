@@ -49,8 +49,23 @@ namespace DisciplineReviews.Controllers
             }
             return courses;
         }
+        
         static public Course GetCourse(int id){
-            return new Course();
+            Course retval = new Course
+            {
+                Easiness = 1.5M,
+                Helpfulness = 3.4M,
+                Clarity = 4.3M,
+                WorkLoad = 5M,
+                Interest = 5M,
+                Id = id,
+                CourseName = "Анализ 1",
+                LecturerName = "Бабев",
+                TotalRating = ((1.5M + 3.4M + 4.3M + 5M) / 4),
+                AvgGrade = 3.2M
+            };
+                
+            return retval;
         }
 
     }
