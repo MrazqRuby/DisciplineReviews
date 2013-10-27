@@ -22,15 +22,27 @@ nav
 }
 
 #rating-table,
-#rating-table-teacher
 {
 	margin-top: -190px;
 	width: 200px;
     height: 200px;
 }
 
-#rating-table td,
-#rating-table0teacher td
+#rating-table-teacher
+{
+	margin-top: -190px;
+	width: 300px;
+    height: 200px;
+}
+
+#rating-table-teacher td
+{
+	width: 250px;
+	height: 20px;
+	padding: 2px;
+}
+
+#rating-table td
 {
 	width: 96px;
 	height: 20px;
