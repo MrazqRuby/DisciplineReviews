@@ -3,7 +3,7 @@
 <button class="btn btn-link courses-pulldown-button showCourses" type="button">
     @Model.CourseName
     @if(Model.Easiness < 2.2M){
-        <img src="/img/course_hard.png" alt="Smiley face" height="40" width="40"/> 
+        <img src="/img/course_hard.png" alt="Smiley face" height="40" width="40" class="popup_text"/> 
     }
     else if (Model.Easiness >= 4.1M)
     {
@@ -39,3 +39,9 @@
 
     </li>
 </ul>
+
+<script>
+	$(".popup_text").on("click",function(){
+        $(this).popover('toggle');
+    });
+</script>
