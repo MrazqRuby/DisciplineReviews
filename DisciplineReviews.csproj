@@ -306,6 +306,8 @@
     <Content Include="Views\Teacher\_TeacherRating.cshtml" />
     <Content Include="Views\Slider\_SliderView.cshtml" />
     <Content Include="Views\Slider\_SliderCourse.cshtml" />
+    <Content Include="Views\Slider\_MainPageSlider.cshtml" />
+    <Content Include="Views\Home\_MainPageContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,5 +20,10 @@ namespace DisciplineReviews.Controllers
         public ActionResult _SliderCourse(Cours course){
             return PartialView("_SliderCourse", course);
         }
+
+        public ActionResult _MainPageSlider()
+        {
+            return PartialView();
+        }
     }
 }
