@@ -1,13 +1,24 @@
 <div class="well review-background-wrapper">
+    <button class="btn pull-right btn-warning addMaterial">Add material</button>
     <ul class = "unstyled">
         <li>
            <span>Name of material</span>
-                <a class="btn btn-mini btn-success" href="#"><i class="icon-thumbs-up icon-white"></i></a>
-                <a class="btn btn-mini btn-danger" href="#"><i class="icon-thumbs-down icon-white"></i></a>
-           
-            <p class="pull-right"><i class="icon-download-alt"></i>
-            <a href="">Download</a>
-            </p>
+            <a class="btn btn-mini btn-success" href="#"><i class="icon-thumbs-up icon-white"></i></a>
+            <a class="btn btn-mini btn-danger" href="#"><i class="icon-thumbs-down icon-white"></i></a>
+            <a class="btn btn-mini btn-inverse" href="#"><i class="icon-download-alt icon-white"></i></a>            
        </li>
     </ul>
 </div>
+
+<script>
+    $(".addMaterial").on("click", function() {
+        $.ajax({
+            type: "POST",
+            url: "/Course/_AddMaterial",
+            context:this,
+            success: function(msg){
+                $(this).parent().html(msg);
+            }
+        });
+    });     
+</script>
