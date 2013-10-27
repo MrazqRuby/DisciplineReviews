@@ -1,6 +1,6 @@
 @import url("bootstrap.min.css");
 @import url("bootstrap-responsive.min.css");
-/*@import url("united.min.css");*/
+/*@import url("flatly.min.css");*/
 
 .navbar-inner,
 .nav,
@@ -72,4 +72,10 @@ nav
 .table-rating td
 {
 	height: 30px;
+}
+
+#slider-header h1
+{
+	width:80%;
+	word-wrap: break-word;
 }
