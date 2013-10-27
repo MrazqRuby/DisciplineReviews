@@ -9,7 +9,7 @@ namespace DisciplineReviews.Controllers
 {
     public class BusinessLogic
     {
-        static private DisciplineReviewsEntities context = new DisciplineReviewsEntities();
+        static private DisciplineReviewsEntities context;
 
         static public List<Cours> GetMatchingCourses(FormCollection form)
         {
@@ -38,7 +38,9 @@ namespace DisciplineReviews.Controllers
         }
         
         static public Cours GetCourse(int id){
-            return context.Courses.Single(c => c.CourseID == id);
+            var a = context.Courses;
+            var b = a.First(c => c.CourseID == id);
+            return b;
         }
 
         static public Course MapCourse(Cours c)
@@ -88,13 +90,23 @@ namespace DisciplineReviews.Controllers
 
         static public int GetUserIdByName(string p)
         {
-            return context.Users.Single(user => user.UserName == p).UserID;
+            return context.Users.First(user => user.UserName == p).UserID;
         }
 
-        internal static void AddNewCourseReview(CourseReview newreview)
+        public static void AddNewCourseReview(CourseReview newreview)
         {
             context.CourseReviews.Add(newreview);
             context.SaveChanges();
+        }
+
+        public static Teacher GetTeacher(int teacherId)
+        {
+            return context.Teachers.First(t => t.TeacherID == teacherId);
+        }
+    
+        public static void Init()
+        {
+ 	        context = new DisciplineReviewsEntities();
         }
     }
 }

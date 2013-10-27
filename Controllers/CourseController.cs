@@ -56,10 +56,11 @@ namespace DisciplineReviews.Controllers
             CourseReview newreview = new CourseReview();
             newreview.CourseID = Convert.ToInt32(form["courseId"]);
             newreview.Easyness = Convert.ToInt32(form["Easiness"]);
+            newreview.Usability = Convert.ToInt32(form["Helpfulness"]);
             newreview.Clarity = Convert.ToInt32(form["Clarity"]);
-            newreview.Interests = Convert.ToInt32(form["Interest"]);
-            newreview.Workload = Convert.ToInt32(form["Workload"]);
-            newreview.Grade = Convert.ToInt32(form["Grade"]);
+            newreview.Interests = Convert.ToInt32(form["Interesting"]);
+            newreview.Workload = 6 - Convert.ToInt32(form["Workload"]);
+            newreview.Grade = newreview.Easyness + newreview.Clarity + newreview.Interests + newreview.Workload + newreview.Usability;
             newreview.Comment = form["Comment"];
             newreview.CourseUp = 0;
             newreview.CourseDown = 0;
