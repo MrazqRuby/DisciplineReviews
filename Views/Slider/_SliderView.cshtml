@@ -1,6 +1,4 @@
-<div id = "review-page">
-<!-- slider menu -->
-  <div class="hero-unit" id = "slider-header"> 
+﻿
   <div id="myCarousel" class="carousel slide">
   <ol class="carousel-indicators">
       @{
@@ -31,9 +29,20 @@
         badimage[3] = "course_workload.png";
         goodimage[4] = "course_interest.png";
         badimage[4] = "course_boring.png";
-        
-        
-        
+
+        string[] goodtext = new string[5];
+        string[] badtext = new string[5];
+
+        goodtext[0] = "Най-ясно преподаван курс";
+        badtext[0] = "Най-неразбираем курс";
+        goodtext[1] = "Най-лесен курс";
+        badtext[1] = "Най-труден курс";
+        goodtext[2] = "Най-полезен курс";
+        badtext[2] = "Най-безполезен курс";
+        goodtext[3] = "Най-лек курс";
+        badtext[3] = "Най-натоварен курс";
+        goodtext[4] = "Най-интересен курс";
+        badtext[4] = "Най-отегчителен курс";
         
             
    }       
@@ -44,10 +53,12 @@
             <table id = "slider-table-model">
                 <tr>
                     <td>
+                        <h5>@goodtext[i]</h5>
 	                    <img src="/img/@goodimage[i]" class="img-rounded"/>
                         @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetBestCourse(funcs[i]))
                     </td>
                     <td>
+                        <h5>@badtext[i]</h5>
 	                    <img src="/img/@badimage[i]" class="img-rounded"/>
                         @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetWorstCourse(funcs[i]))
                     </td>
@@ -60,4 +71,3 @@
   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
-  </div></div>

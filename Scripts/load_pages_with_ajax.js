@@ -20,8 +20,6 @@ $(document).ready(function(){
             }
         });
     });
-
-
     default_content = $('#main_content').html();
 });
 

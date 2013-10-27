@@ -6,61 +6,66 @@
 <table id = "table-compare" class = "well" >
     <tr>
         <td colspan = "2">
-            <img src="/img/course_boring.png" class="img-rounded">
+            <img src="/img/course_easy.gif" class="img-rounded">
         </td>
         <td colspan = "2">
-            <img src="/img/course_boring.png" class="img-rounded">
+            <img src="/img/photo.png" class="img-rounded">
         </td>
     </tr>
     <tr>
         <td>
             <img src="/img/beer.png">
         </td>
-        <td><a href="">@courses[0].Discipline.DisciplineName</a></td>
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[0].CourseID" href="#">@courses[0].Discipline.DisciplineName</a></td>
+        
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[5].CourseID" href="#">@courses[5].Discipline.DisciplineName</a></td>
         <td>
             <img src="/img/e1.png">
         </td>
-        <td><a href="">@courses[5].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/wine.png">
         </td>
-        <td><a href="">@courses[1].Discipline.DisciplineName</a></td>
-        <td>
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[1].CourseID" href="#">@courses[1].Discipline.DisciplineName</a></td>
+        
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[6].CourseID" href="#">@courses[6].Discipline.DisciplineName</a></td>
+         <td>
             <img src="/img/e2.png">
         </td>
-        <td><a href="">@courses[6].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/cocktail.png">
         </td>
-        <td><a href="">@courses[2].Discipline.DisciplineName</a></td>
-        <td>
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[2].CourseID" href="#">@courses[2].Discipline.DisciplineName</a></td>
+        
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[7].CourseID" href="#">@courses[7].Discipline.DisciplineName</a></td>
+         <td>
             <img src="/img/e3.png">
         </td>
-        <td><a href="">@courses[7].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/shot.png">
         </td>
-        <td><a href="">@courses[3].Discipline.DisciplineName</a></td>
-        <td>
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[3].CourseID" href="#">@courses[3].Discipline.DisciplineName</a></td>
+       
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[8].CourseID" href="#">@courses[8].Discipline.DisciplineName</a></td>
+          <td>
             <img src="/img/e4.png">
         </td>
-        <td><a href="">@courses[8].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/bottle.png">
         </td>
-        <td><a href="">@courses[4].Discipline.DisciplineName</a></td>
-        <td>
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[4].CourseID" href="#">@courses[4].Discipline.DisciplineName</a></td>
+       
+        <td><a class="btn btn-link courses-pulldown-button go-button" data-course-id="@courses[9].CourseID" href="#">@courses[9].Discipline.DisciplineName</a></td>
+          <td>
             <img src="/img/e5.png">
         </td>
-        <td><a href="">@courses[9].Discipline.DisciplineName</a></td>
     </tr>
     <tr>
         <td colspan="4"><button type="button" id="make-criteria" class="btn btn-warning ">Избери курс по твой вкус</button></td>        
@@ -79,3 +84,5 @@
         });
     });
 </script>
+
+<script src="@Href("~/Scripts/load_review_page.js")"></script>

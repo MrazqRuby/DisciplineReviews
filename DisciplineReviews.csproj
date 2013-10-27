@@ -308,6 +308,8 @@
     <Content Include="Views\Slider\_MainPageSlider.cshtml" />
     <Content Include="Views\Home\_MainPageContent.cshtml" />
     <Content Include="Views\Home\_MakeCriteriaForm.cshtml" />
+    <Content Include="Views\Home\_Teachers.cshtml" />
+    <Content Include="Views\Teacher\_SingleTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

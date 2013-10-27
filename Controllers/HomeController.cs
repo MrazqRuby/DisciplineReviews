@@ -107,5 +107,11 @@ namespace DisciplineReviews.Controllers
             
             return PartialView("_SearchResults",model);
         }
+
+        public ActionResult _Teachers()
+        {
+            var model = BusinessLogic.GetAllTeachers();
+            return PartialView(model);
+        }
     }
 }

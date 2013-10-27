@@ -17,7 +17,7 @@
                 <ul class="nav">
                     <li ><a href="#_Home">Начална страница</a></li>
                     <li><a href="#_Courses">Дисциплини</a></li>
-                    <li><a href="#page2">Преподаватели</a></li>
+                    <li><a href="#_Teachers">Преподаватели</a></li>
                 </ul>
                 <form class="form-search search-bar">
                     <input name="Name" type="text" class="input-big search-query">
@@ -44,4 +44,16 @@
 @section scripts{
     <script src="@Href("~/Scripts/bootstrap.js")"></script> 
     <script src="@Href("~/Scripts/load_pages_with_ajax.js")"></script>
+    <script>
+        $.ajax({
+            type: "POST",
+            url: "/Home/_Home",
+            dataType: "html",
+            success: function (msg) {
+                if (parseInt(msg) != 0) {
+                    $("#main_content").html(msg);
+                }
+            }
+        });
+    </script>
 }

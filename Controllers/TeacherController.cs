@@ -16,6 +16,11 @@ namespace DisciplineReviews.Controllers
             return View();
         }
 
+        public ActionResult _SingleTeacher(Teacher model)
+        {
+            return PartialView(model);
+        }
+
         public ActionResult _TeacherRating(int courseId)
         {
             Teacher model = BusinessLogic.GetTeacher(courseId);

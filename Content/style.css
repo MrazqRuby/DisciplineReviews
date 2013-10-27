@@ -21,11 +21,11 @@ nav
 	margin-top: 10px;
 }
 
-#rating-table,
+#rating-table
 {
-	margin-top: -190px;
-	width: 200px;
-    height: 200px;
+	margin-top: -230px;
+	width: 250px;
+    height: 180px;
 }
 
 #rating-table-teacher
@@ -38,7 +38,7 @@ nav
 #rating-table-teacher td
 {
 	width: 250px;
-	height: 20px;
+	height: 15px;
 	padding: 2px;
 }
 
@@ -95,11 +95,16 @@ nav
 	word-wrap: break-word;
 }
 
+
 #myCarousel,
 #carousel-example-generic
 {
-	height: 200px;
+	height: 250px;
+	word-wrap: break-word;
 }
+
+
+
 
 #slider-table-model
 {

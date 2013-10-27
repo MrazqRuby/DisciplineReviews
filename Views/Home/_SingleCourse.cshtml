@@ -1,32 +1,32 @@
 ﻿@model DisciplineReviews.Models.Course
 
-<button class="btn btn-link courses-pulldown-button showCourses" type="button">
+<button style="display:inline" class="btn btn-link showCourses" type="button">
     @Model.CourseName
-    @if(Model.Easiness < 2.2M){
-        <img src="/img/course_hard.png" alt="Smiley face" height="40" width="40" class="popup_text"/> 
-    }
-    else if (Model.Easiness >= 4.1M)
-    {
-        <img src="/img/course_easy.gif" alt="Smiley face" height="50" width="50"/>         
-    }
-    @if (Model.Interest < 2.2M )
-    {
-        <img src="/img/course_boring.png" alt="Smiley face" height="50" width="50"/>         
-    }
-    else if (Model.Interest >= 4.1M)
-    {
-        <img src="/img/course_interest.png" alt="Smiley face" height="50" width="50"/> 
-    }
-    @if (Model.Helpfulness < 2.2M )
-    {
-        <img src="/img/course_useless.png" alt="Smiley face" height="40" width="40"/>         
-    }
-    else if (Model.Helpfulness >= 4.1M)
-    {
-        <img src="/img/course_useful.jpg" alt="Smiley face" height="50" width="50"/> 
-    }
 </button>
-
+@if (Model.Easiness < 2.2M && Model.Easiness >= 1)
+{
+    <img title="Този курс е труден" src="/img/course_hard.png" alt="Smiley face" height="40" width="40" class="popup_text"/> 
+}
+else if (Model.Easiness >= 4.1M)
+{
+    <img title="Айляк, лесен курс" src="/img/course_easy.gif" alt="Smiley face" height="50" width="50"/>         
+}
+@if (Model.Interest < 2.2M  && Model.Interest >= 1)
+{
+    <img title="Отегчително" src="/img/course_boring.png" alt="Smiley face" height="50" width="50"/>         
+}
+else if (Model.Interest >= 4.1M)
+{
+    <img class="Интересен курс" src="/img/course_interest.png" alt="Smiley face" height="50" width="50"/> 
+}
+@if (Model.Helpfulness < 2.2M && Model.Helpfulness >= 1)
+{
+    <img class="Няма полза" src="/img/course_useless.png" alt="Smiley face" height="40" width="40"/>         
+}
+else if (Model.Helpfulness >= 4.1M)
+{
+    <img class="Много полезен" src="/img/course_useful.jpg" alt="Smiley face" height="50" width="50"/> 
+}
 <ul class="hide-courses unstyled">
     <li>
         <div class="text-info">
@@ -39,7 +39,7 @@
 
     </li>
 </ul>
-
+<br>
 <script>
 	$(".popup_text").on("click",function(){
         $(this).popover('toggle');

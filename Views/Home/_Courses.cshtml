@@ -19,10 +19,11 @@
     }
 }
 
+
 <script>
 
-    $(".showCourses").on("click", function () {
-           $(this).next("ul").slideToggle();
+$(".showCourses").on("click", function () {
+           $(this).nextAll("ul").first().slideToggle();
     });
     $.ajax({
         type: "POST",

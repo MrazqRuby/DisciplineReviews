@@ -60,6 +60,20 @@ namespace DisciplineReviews.Controllers
             return b;
         }
 
+        static public Cours GetCoursePrime(int id)
+        {
+            var a = context.Courses;
+            var b = a.First(c => c.CourseID == id);
+            return b;
+        }
+
+        static public Cours GetCoursePrimePrime(int id)
+        {
+            var a = context.Courses;
+            var b = a.First(c => c.CourseID == id);
+            return b;
+        }
+
         static public Course MapCourse(Cours c)
         {
             Course course = new Course();
@@ -73,18 +87,20 @@ namespace DisciplineReviews.Controllers
 
             if (count > 0)
             {
+                var numreviews = c.CourseReviews.Count;
                 decimal helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Usability));
-                course.Helpfulness = helper / count;
+                course.Helpfulness = Math.Round(helper / count,2);
+                
                 helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Clarity));
-                course.Clarity = helper / count;
+                course.Clarity = Math.Round(helper / count,2);
                 helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Easyness));
-                course.Easiness = helper / count;
+                course.Easiness = Math.Round(helper / count,2);
                 helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Interests));
-                course.Interest = helper / count;
+                course.Interest = Math.Round(helper / count,2);
                 helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Workload));
-                course.WorkLoad = helper / count;
-                course.TotalRating = (course.Helpfulness + course.Clarity + course.Interest + course.Easiness + course.WorkLoad) / 5;
-
+                course.WorkLoad = Math.Round(helper / count,2);
+                course.TotalRating = Math.Round((course.Helpfulness + course.Clarity + course.Interest + course.Easiness + (6-course.WorkLoad)) / 5,2);
+                
             }
             else
             {
@@ -134,6 +150,11 @@ namespace DisciplineReviews.Controllers
             courses.AddRange(a);
             courses.AddRange(b);
             return courses;
+        }
+
+        static public List<Teacher> GetAllTeachers()
+        {
+            return context.Teachers.ToList();
         }
     }
 }

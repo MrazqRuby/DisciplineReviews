@@ -24,13 +24,13 @@ namespace DisciplineReviews.Controllers
 
         public ActionResult _CourseBody(int courseId)
         {
-            Cours model = BusinessLogic.GetCourse(courseId);
+            Cours model = BusinessLogic.GetCoursePrime(courseId);
             return PartialView(model);
         }
 
         public ActionResult _CourseOverview(int courseId)
         {
-            var model = BusinessLogic.GetCourse(courseId);
+            var model = BusinessLogic.GetCoursePrimePrime(courseId);
             return PartialView(model);
         }
 
@@ -59,7 +59,7 @@ namespace DisciplineReviews.Controllers
             newreview.Usability = Convert.ToInt32(form["Helpfulness"]);
             newreview.Clarity = Convert.ToInt32(form["Clarity"]);
             newreview.Interests = Convert.ToInt32(form["Interesting"]);
-            newreview.Workload = 6 - Convert.ToInt32(form["Workload"]);
+            newreview.Workload = Convert.ToInt32(form["Workload"]);
             newreview.Grade = newreview.Easyness + newreview.Clarity + newreview.Interests + newreview.Workload + newreview.Usability;
             newreview.Comment = form["Comment"];
             newreview.CourseUp = 0;
