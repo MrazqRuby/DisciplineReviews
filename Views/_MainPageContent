@@ -1,4 +1,4 @@
-<table id = "table-compare" >
+<table id = "table-compare" class = "well" >
     <tr>
         <td colspan = "2">
             <img src="course_boring_2.png" class="img-rounded">
