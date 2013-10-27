@@ -85,5 +85,16 @@ namespace DisciplineReviews.Controllers
             var reviews = context.Courses.Single(c => c.CourseID == id).CourseReviews.ToList();
             return reviews;
         }
+
+        static public int GetUserIdByName(string p)
+        {
+            return context.Users.Single(user => user.UserName == p).UserID;
+        }
+
+        internal static void AddNewCourseReview(CourseReview newreview)
+        {
+            context.CourseReviews.Add(newreview);
+            context.SaveChanges();
+        }
     }
 }
