@@ -9,15 +9,28 @@ namespace DisciplineReviews.Controllers
 {
     public class BusinessLogic
     {
-        static private DisciplineReviewsEntities context = new DisciplineReviewsEntities();
+        static private DisciplineReviewsEntities context;
 
         static public List<Cours> GetMatchingCourses(FormCollection form)
         {
             var name = form["Name"];
             var retval = (from c in context.Courses
-                          where c.Discipline.DisciplineName.StartsWith(name)
+                          where c.Discipline.DisciplineName.Contains(name)
                           select c).ToList();
             return retval;
+        }
+
+        static public Cours GetBestCourse(Func<Cours, double?> func){
+            var a = context.Courses.Where(c => c.CourseReviews.Count > 0).OrderBy(func);
+            var b = a.FirstOrDefault();
+            return b;
+        }
+
+        static public Cours GetWorstCourse(Func<Cours, double?> func)
+        {
+            var a = context.Courses.Where(c => c.CourseReviews.Count > 0).OrderByDescending(func);
+            var b = a.FirstOrDefault();
+            return b;
         }
 
         static public List<List<Cours>> GetAllCourses()
@@ -38,7 +51,9 @@ namespace DisciplineReviews.Controllers
         }
         
         static public Cours GetCourse(int id){
-            return context.Courses.Single(c => c.CourseID == id);
+            var a = context.Courses;
+            var b = a.First(c => c.CourseID == id);
+            return b;
         }
 
         static public Course MapCourse(Cours c)
@@ -88,13 +103,23 @@ namespace DisciplineReviews.Controllers
 
         static public int GetUserIdByName(string p)
         {
-            return context.Users.Single(user => user.UserName == p).UserID;
+            return context.Users.First(user => user.UserName == p).UserID;
         }
 
-        internal static void AddNewCourseReview(CourseReview newreview)
+        public static void AddNewCourseReview(CourseReview newreview)
         {
             context.CourseReviews.Add(newreview);
             context.SaveChanges();
+        }
+
+        public static Teacher GetTeacher(int teacherId)
+        {
+            return context.Teachers.First(t => t.TeacherID == teacherId);
+        }
+    
+        public static void Init()
+        {
+ 	        context = new DisciplineReviewsEntities();
         }
     }
 }

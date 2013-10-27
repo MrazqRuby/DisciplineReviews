@@ -1,0 +1,39 @@
+<div id = "review-page">
+<!-- slider menu -->
+  <div class="hero-unit" id = "slider-header"> 
+  <div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+      @{
+        for(int i = 0; i < 5; i++){
+            <li data-target="#myCarousel" data-slide-to="@i" @if(i==0){<text>class="active"</text>}></li>
+        }
+      }
+      
+  </ol>
+  <!-- Carousel items -->
+   @{
+        Func<DisciplineReviews.Cours,double?>[] funcs = new Func<DisciplineReviews.Cours,double?>[5];
+        funcs[0] = (a => a.CourseReviews.Average(r => r.Clarity));
+        funcs[1] = (a => a.CourseReviews.Average(r => r.Easyness));
+        funcs[2] = (a => a.CourseReviews.Average(r => r.Usability));
+        funcs[3] = (a => a.CourseReviews.Average(r => r.Workload));
+        funcs[4] = (a => a.CourseReviews.Average(r => r.Interests));
+   }       
+   
+  <div class="carousel-inner">
+      @for(int i = 0; i < 5; i++){
+        <div class="@{if(i==0){<text>active </text>}} item">
+            <table id = "slider-table-model">
+                <tr>
+                    @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetBestCourse(funcs[i]))
+                    @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetWorstCourse(funcs[i]))
+                </tr>
+            </table>
+        </div>
+      }
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+  </div></div>
