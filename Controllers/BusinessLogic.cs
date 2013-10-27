@@ -15,9 +15,22 @@ namespace DisciplineReviews.Controllers
         {
             var name = form["Name"];
             var retval = (from c in context.Courses
-                          where c.Discipline.DisciplineName.StartsWith(name)
+                          where c.Discipline.DisciplineName.Contains(name)
                           select c).ToList();
             return retval;
+        }
+
+        static public Cours GetBestCourse(Func<Cours, double?> func){
+            var a = context.Courses.Where(c => c.CourseReviews.Count > 0).OrderBy(func);
+            var b = a.FirstOrDefault();
+            return b;
+        }
+
+        static public Cours GetWorstCourse(Func<Cours, double?> func)
+        {
+            var a = context.Courses.Where(c => c.CourseReviews.Count > 0).OrderByDescending(func);
+            var b = a.FirstOrDefault();
+            return b;
         }
 
         static public List<List<Cours>> GetAllCourses()
