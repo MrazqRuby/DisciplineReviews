@@ -1,2 +1,26 @@
 @model DisciplineReviews.Models.HomeModel
-@Html.Action("_SliderView","Slider");
+
+<script>
+    $.ajax({
+        type: "POST",
+        url: "/Home/_MainPageContent",
+        dataType: "html",
+        success: function (msg) {
+            if (parseInt(msg) != 0) {
+                $("#main_content").html(msg);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Slider/_MainPageSlider",
+        dataType: "html",
+        success: function (msg) {
+            if (parseInt(msg) != 0) {
+                $("#slider-header").html(msg);
+            }
+        }
+    });
+
+</script>

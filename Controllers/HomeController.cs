@@ -50,5 +50,10 @@ namespace DisciplineReviews.Controllers
         {
             return PartialView();
         }
+        
+        public ActionResult _MainPageContent()
+        {
+            return PartialView();
+        }
     }
 }

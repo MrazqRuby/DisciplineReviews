@@ -19,9 +19,20 @@
     }
 }
 
-  <script>
-    $(".showCourses").on("click",function(){
+<script>
+
+    $(".showCourses").on("click", function () {
            $(this).next("ul").slideToggle();
-        });
-    </script>
-    <script src="@Href("~/Scripts/load_review_page.js")"></script>
+    });
+    $.ajax({
+        type: "POST",
+        url: "/Slider/_SliderView",
+        dataType: "html",
+        success: function (msg) {
+            if (parseInt(msg) != 0) {
+                $("#slider-header").html(msg);
+            }
+        }
+    });
+</script>
+<script src="@Href("~/Scripts/load_review_page.js")"></script>

@@ -18,6 +18,24 @@
         funcs[2] = (a => a.CourseReviews.Average(r => r.Usability));
         funcs[3] = (a => a.CourseReviews.Average(r => r.Workload));
         funcs[4] = (a => a.CourseReviews.Average(r => r.Interests));
+
+        string[] goodimage = new string[5];
+        string[] badimage = new string[5];
+        goodimage[0] = "course_clarity.png";
+        badimage[0] = "course_unclarity.png";
+        goodimage[1] = "course_easy.gif";
+        badimage[1] = "course_hard.png";
+        goodimage[2] = "course_useful.jpg";
+        badimage[2] = "course_unuseful.png";
+        goodimage[3] = "course_les_workload.png";
+        badimage[3] = "course_workload.png";
+        goodimage[4] = "course_interest.png";
+        badimage[4] = "course_boring.png";
+        
+        
+        
+        
+            
    }       
    
   <div class="carousel-inner">
@@ -25,8 +43,14 @@
         <div class="@{if(i==0){<text>active </text>}} item">
             <table id = "slider-table-model">
                 <tr>
-                    @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetBestCourse(funcs[i]))
-                    @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetWorstCourse(funcs[i]))
+                    <td>
+	                    <img src="/img/@goodimage[i]" class="img-rounded"/>
+                        @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetBestCourse(funcs[i]))
+                    </td>
+                    <td>
+	                    <img src="/img/@badimage[i]" class="img-rounded"/>
+                        @Html.Action("_SliderCourse",DisciplineReviews.Controllers.BusinessLogic.GetWorstCourse(funcs[i]))
+                    </td>
                 </tr>
             </table>
         </div>
