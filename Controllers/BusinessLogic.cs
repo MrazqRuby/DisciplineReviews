@@ -50,6 +50,10 @@ namespace DisciplineReviews.Controllers
             return courses;
         }
         
+        static public IQueryable<Cours> GetAllCoursesDBContext(){
+            return context.Courses.AsQueryable();
+        }
+
         static public Cours GetCourse(int id){
             var a = context.Courses;
             var b = a.First(c => c.CourseID == id);

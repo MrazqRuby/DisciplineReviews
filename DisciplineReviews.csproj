@@ -301,13 +301,13 @@
     <Content Include="Views\Course\_CourseReviews.cshtml" />
     <Content Include="Views\Course\_AddReview.cshtml" />
     <Content Include="Views\Course\_CourseMaterials.cshtml" />
-    <Content Include="Views\Home\_SelectCoursesBy.cshtml" />
     <Content Include="Views\Home\_SearchResults.cshtml" />
     <Content Include="Views\Teacher\_TeacherRating.cshtml" />
     <Content Include="Views\Slider\_SliderView.cshtml" />
     <Content Include="Views\Slider\_SliderCourse.cshtml" />
     <Content Include="Views\Slider\_MainPageSlider.cshtml" />
     <Content Include="Views\Home\_MainPageContent.cshtml" />
+    <Content Include="Views\Home\_MakeCriteriaForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
