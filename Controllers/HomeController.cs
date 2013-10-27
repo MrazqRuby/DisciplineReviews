@@ -18,9 +18,10 @@ namespace DisciplineReviews.Controllers
 
         public ActionResult _Home(string page)
         {
-                HomeModel model = new HomeModel();
+                //HomeModel model = new HomeModel();
                 //model.top10courses = BusinessLogic.GetTop10Courses();
-                return PartialView(page, model);
+                
+                return PartialView(page);
         }
 
         public ActionResult _Courses()

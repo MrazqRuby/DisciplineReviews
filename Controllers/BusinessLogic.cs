@@ -125,5 +125,15 @@ namespace DisciplineReviews.Controllers
         {
  	        context = new DisciplineReviewsEntities();
         }
+
+        public static List<Cours> GetRandomCourses()
+        {
+            List<Cours> courses = new List<Cours>(10);
+            var a = context.Courses.Where(c => c.CourseReviews.Count > 0).Where(c => c.CourseReviews.Average(r => r.Easyness) > 3.8).Take(5);
+            var b = context.Courses.Where(c => c.CourseReviews.Count > 0).Where(c => c.CourseReviews.Average(r => r.Easyness) <= 2.2).Take(5);
+            courses.AddRange(a);
+            courses.AddRange(b);
+            return courses;
+        }
     }
 }

@@ -1,4 +1,6 @@
-@model List<DisciplineReviews.Cours>
+@{
+    var courses = DisciplineReviews.Controllers.BusinessLogic.GetRandomCourses();
+}
 
 <table id = "table-compare" class = "well" >
     <tr>
@@ -13,51 +15,51 @@
         <td>
             <img src="/img/beer.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[0].Discipline.DisciplineName</a></td>
         <td>
             <img src="/img/e1.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[5].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/wine.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[1].Discipline.DisciplineName</a></td>
         <td>
             <img src="/img/e2.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[6].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/cocktail.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[2].Discipline.DisciplineName</a></td>
         <td>
             <img src="/img/e3.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[7].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/shot.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[3].Discipline.DisciplineName</a></td>
         <td>
             <img src="/img/e4.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[8].Discipline.DisciplineName</a></td>
     </tr>
      <tr>
         <td>
             <img src="/img/bottle.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[4].Discipline.DisciplineName</a></td>
         <td>
             <img src="/img/e5.png">
         </td>
-        <td><a href=""></a></td>
+        <td><a href="">@courses[9].Discipline.DisciplineName</a></td>
     </tr>
     <tr>
         <td colspan="4"><button type="button" id="make-criteria" class="btn btn-warning ">Избери курс по твой вкус</button></td>        
