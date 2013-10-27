@@ -1,0 +1,76 @@
+<table id = "table-compare" class = "well" >
+    <tr>
+        <td colspan = "2">
+            <img src="/img/course_boring.png" class="img-rounded">
+        </td>
+        <td colspan = "2">
+            <img src="/img/course_boring.png" class="img-rounded">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="/img/beer.png">
+        </td>
+        <td><a href=""></a></td>
+        <td>
+            <img src="/img/e1.png">
+        </td>
+        <td><a href=""></a></td>
+    </tr>
+     <tr>
+        <td>
+            <img src="/img/wine.png">
+        </td>
+        <td><a href=""></a></td>
+        <td>
+            <img src="/img/e2.png">
+        </td>
+        <td><a href=""></a></td>
+    </tr>
+     <tr>
+        <td>
+            <img src="/img/cocktail.png">
+        </td>
+        <td><a href=""></a></td>
+        <td>
+            <img src="/img/e3.png">
+        </td>
+        <td><a href=""></a></td>
+    </tr>
+     <tr>
+        <td>
+            <img src="/img/shot.png">
+        </td>
+        <td><a href=""></a></td>
+        <td>
+            <img src="/img/e4.png">
+        </td>
+        <td><a href=""></a></td>
+    </tr>
+     <tr>
+        <td>
+            <img src="/img/bottle.png">
+        </td>
+        <td><a href=""></a></td>
+        <td>
+            <img src="/img/e5.png">
+        </td>
+        <td><a href=""></a></td>
+    </tr>
+    <tr>
+        <td colspan="4"><button type="button" id="make-criteria" class="btn btn-warning ">Make your own</button></td>        
+    </tr>
+</table>
+
+<script type="text/javascript">
+    $("#make-criteria").on("click", function(){
+        $.ajax({
+            type: "POST",
+            url: "/Course/_MakeCriteriaForm",
+            context:this,
+            success: function(msg){
+                $("#main_content").html(msg);
+            }
+        });
+    });
+</script>
