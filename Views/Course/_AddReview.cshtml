@@ -1,0 +1,57 @@
+<div class="well review-background-wrapper" >
+    <form class="form-submit-review">
+    <table class="table table-hover table-rating">
+        <tr>
+            <td><span class="label label-important">Helpfulness</span></td>
+            <td><label class="radio inline "><input type="radio" name="Helpfulness" id="optionsRadios1" value="1" checked><span class="badge badge-warning">1</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Helpfulness" id="optionsRadios1" value="2" checked><span class="badge badge-warning">2</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Helpfulness" id="optionsRadios1" value="3" checked><span class="badge badge-warning">3</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Helpfulness" id="optionsRadios1" value="4" checked><span class="badge badge-warning">4</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Helpfulness" id="optionsRadios1" value="5" checked><span class="badge badge-warning">5</span></label></td>
+            <td rowspan="4"><textarea rows="8"></textarea></td>
+        </tr>
+        <tr>
+            <td><span class="label label-important">Easiness</span></td>
+            <td><label class="radio inline "><input type="radio" name="Easiness" id="optionsRadios1" value="1" checked><span class="badge badge-warning">1</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Easiness" id="optionsRadios1" value="2" checked><span class="badge badge-warning">2</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Easiness" id="optionsRadios1" value="3" checked><span class="badge badge-warning">3</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Easiness" id="optionsRadios1" value="4" checked><span class="badge badge-warning">4</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Easiness" id="optionsRadios1" value="5" checked><span class="badge badge-warning">5</span></label></td>
+        </tr>
+        <tr>
+            <td><span class="label label-important">Interesting</span></td>
+            <td><label class="radio inline "><input type="radio" name="Interesting" id="optionsRadios1" value="1" checked><span class="badge badge-warning">1</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Interesting" id="optionsRadios1" value="2" checked><span class="badge badge-warning">2</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Interesting" id="optionsRadios1" value="3" checked><span class="badge badge-warning">3</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Interesting" id="optionsRadios1" value="4" checked><span class="badge badge-warning">4</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Interesting" id="optionsRadios1" value="5" checked><span class="badge badge-warning">5</span></label></td>
+        </tr>
+        <tr>
+            <td><span class="label label-important">Workflow</span></td>
+            <td><label class="radio inline "><input type="radio" name="Workflow" id="optionsRadios1" value="1" checked><span class="badge badge-warning">1</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Workflow" id="optionsRadios1" value="2" checked><span class="badge badge-warning">2</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Workflow" id="optionsRadios1" value="3" checked><span class="badge badge-warning">3</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Workflow" id="optionsRadios1" value="4" checked><span class="badge badge-warning">4</span></label></td>
+            <td><label class="radio inline"><input type="radio" name="Workflow" id="optionsRadios1" value="5" checked><span class="badge badge-warning">5</span></label></td>
+        </tr>
+    </table>
+    </form>
+    <button type="button" class="btn btn-warning pull-right submitReview">Add review</button>
+</div>
+
+<script>
+    $('.submitReview').click(function (e) {
+        $.ajax({
+            type: "POST",
+            url: "/Course/SubmitReview",
+            data: $(".form-submit-review, #courseId").serialize(),
+            dataType: "html",
+            context: this,
+            success: function (msg) {
+                if (parseInt(msg) != 0) {
+                    $("#tab_content").html(msg);
+                }
+            }
+        });
+    });
+</script>

@@ -55,8 +55,8 @@ namespace DisciplineReviews.Controllers
         {
             var Easy = form["Easiness"];
             int Id = Convert.ToInt32(form["courseId"]);
-            var reviews = BusinessLogic.GetReviews(courseId);
-            return PartialView("_CourseReviews", courseId);
+            var reviews = BusinessLogic.GetReviews(Id);
+            return PartialView("_CourseReviews", Id);
         }
     }
 }

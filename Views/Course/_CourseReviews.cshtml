@@ -1,0 +1,27 @@
+@model List<DisciplineReviews.CourseReview>
+<div class="well review-background-wrapper" >
+    <button class="btn pull-right btn-warning addReview">Add review</button>
+    @foreach(DisciplineReviews.CourseReview review in Model){
+        <h3>@review.User.UserName</h3>
+        <p>@review.Comment</p>
+        <div class="btn-toolbar">
+            <div class="btn-group pull-right">
+                <a class="btn btn-small btn-success" href="#"><i class="icon-thumbs-up icon-white"></i></a>
+                <a class="btn btn-small btn-danger" href="#"><i class="icon-thumbs-down icon-white"></i></a>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+	$(".addReview").on("click", function() {
+		$.ajax({
+			type: "POST",
+			url: "/Course/_AddReview",
+			context:this,
+			success: function(msg){
+				$(this).parent().html(msg);
+			}
+		});
+	});		
+</script>
