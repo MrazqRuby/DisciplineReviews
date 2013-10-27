@@ -161,7 +161,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
-    <Compile Include="Models\CourseOverview.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -297,7 +296,9 @@
     <Content Include="Views\Home\_SingleCourse.cshtml" />
     <Content Include="Views\Course\_CourseBody.cshtml" />
     <Content Include="Views\Course\_CourseOverview.cshtml" />
-    <Content Include="Views\Course\_CourseReview.cshtml" />
+    <Content Include="Views\Course\_CourseReviews.cshtml" />
+    <Content Include="Views\Course\_AddReview.cshtml" />
+    <Content Include="Views\Course\_CourseMaterials.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

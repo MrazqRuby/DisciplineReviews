@@ -14,40 +14,43 @@ namespace DisciplineReviews.Controllers
 
         public ActionResult Index(int id)
         {
-            Course course = new Course();
-            return View(course);
+            //Course course = new Course();
+            return View();
         }
 
-        public ActionResult _CourseRating(int courseid)
+        public ActionResult _CourseRating(int courseId)
         {
-            Course model = BusinessLogic.GetCourse(courseid);
+            Cours cours = BusinessLogic.GetCourse(courseId);
+            Course model = BusinessLogic.MapCourse(cours);
             return PartialView(model);
         }
 
-        public ActionResult _CourseBody(int courseid)
+        public ActionResult _CourseBody(int courseId)
         {
-            Course model = BusinessLogic.GetCourse(courseid);
+            Cours model = BusinessLogic.GetCourse(courseId);
             return PartialView(model);
         }
 
-        public ActionResult _CourseOverview(Course model)
+        public ActionResult _CourseOverview(int courseId)
         {
+            var model = BusinessLogic.GetCourse(courseId);
             return PartialView(model);
         }
 
-        public ActionResult _CourseReview(int courseid)
+        public ActionResult _CourseReviews(int courseId)
         {
-            //List<DisciplineReviews.CourseReview> reviews = new List<CourseReview>(5);
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    DisciplineReviews.CourseReview review = new CourseReview();
-            //    review.User = new User();
-            //    review.User.UserName = "Саламчо";
-            //    review.Comment = "Страхотен курс, Бабев говори с ентусиазъм, изпита е лесен и асистентите винаги ти помагат. Единственият проблем е, че на единият малко не се разбира какво приказва.";
-            //    reviews.Add(review);
-            //}
-            var reviews = BusinessLogic.GetReviews(courseid);
+            var reviews = BusinessLogic.GetReviews(courseId);
             return PartialView(reviews);
+        }
+
+        public ActionResult _AddReview()
+        {
+            return PartialView();
+        }
+
+        public ActionResult _CourseMaterials(int courseId)
+        {
+            return PartialView();
         }
     }
 }

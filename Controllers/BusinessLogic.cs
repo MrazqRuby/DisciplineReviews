@@ -10,42 +10,64 @@ namespace DisciplineReviews.Controllers
     {
         static private DisciplineReviewsEntities context = new DisciplineReviewsEntities();
 
-        static public List<CourseOverview> GetTop10Courses()
+        static public List<List<Cours>> GetAllCourses()
         {
-            List<CourseOverview> courses = new List<CourseOverview>(10);
-            for (int i = 0; i < 10; i++) courses.Add(new CourseOverview());
-            for (int i = 0; i < 10; i++)
-            {
-                courses[i].Name = "Analiz 1";
-                courses[i].Id = 1;
-                courses[i].Credits = 2;
-                courses[i].Lecturer = "Babev";
-                courses[i].Type = "Zadaljitelna";
-            }
             
-
+            var types = context.Types.ToList();
+            List<List<Cours>> courses = new List<List<Cours>>(types.Count);
+            
+            for (int i = 0; i < types.Count; i++)
+            {
+                var list = context.Courses.SqlQuery("select * from Courses as c inner join Disciplines as d on c.DisciplineID = d.DisciplineID where d.TypeID = " + types[i].TypeID).ToList();
+                //courses[i] = list;
+                //var list = context.Courses.Where(c => c.Discipline.TypeID == types[i].TypeID).ToList();
+                courses.Add(list);
+            }
 
             return courses;
         }
         
-        static public Course GetCourse(int id){
-            Course retval = new Course
+        static public Cours GetCourse(int id){
+            return context.Courses.Single(c => c.CourseID == id);
+        }
+
+        static public Course MapCourse(Cours c)
+        {
+            Course course = new Course();
+            course.Id = c.CourseID;
+            course.CourseName = c.Discipline.DisciplineName;
+            course.LecturerName = c.Teacher.TeacherName;
+            course.Credits = c.Discipline.DisciplineCredits;
+            course.Type = c.Discipline.Type.Name;
+
+            decimal count = c.CourseReviews.Count;
+
+            if (count > 0)
             {
-                Easiness = 1.5M,
-                Helpfulness = 3.4M,
-                Clarity = 4.3M,
-                WorkLoad = 5M,
-                Interest = 5M,
-                Id = id,
-                CourseName = "Анализ 1",
-                LecturerName = "Бабев",
-                Type = "Задължителна",
-                Credits = 8,
-                TotalRating = ((1.5M + 3.4M + 4.3M + 5M) / 4),
-                AvgGrade = 3.2M
-            };
-                
-            return retval;
+                decimal helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Usability));
+                course.Helpfulness = helper / count;
+                helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Clarity));
+                course.Clarity = helper / count;
+                helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Easyness));
+                course.Easiness = helper / count;
+                helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Interests));
+                course.Interest = helper / count;
+                helper = c.CourseReviews.Sum(cr => Convert.ToDecimal(cr.Workload));
+                course.WorkLoad = helper / count;
+                course.TotalRating = (course.Helpfulness + course.Clarity + course.Interest + course.Easiness + course.WorkLoad) / 5;
+
+            }
+            else
+            {
+                course.Helpfulness = 0;
+                course.Clarity = 0;
+                course.Easiness = 0;
+                course.Interest = 0;
+                course.WorkLoad = 0;
+                course.TotalRating = 0;
+            }
+
+            return course;
         }
 
         static public List<CourseReview> GetReviews (int id)

@@ -1,19 +1,21 @@
-﻿@model List<List<DisciplineReviews.Models.CourseOverview>>
+﻿@model List<List<DisciplineReviews.Cours>>
 
-@foreach (List<DisciplineReviews.Models.CourseOverview> courses in Model)
+@foreach (List<DisciplineReviews.Cours> courses in Model)
 {
-    <ul class="unstyled">
-        <li>
-            <button class="btn btn-inverse courses-pulldown-button showCourses" type="button">@courses[0].Type</button>
-            <ul class="hide-courses unstyled">
-                <li>
-                    @foreach(DisciplineReviews.Models.CourseOverview courseoverview in courses){
-                        @Html.Action("_SingleCourse", courseoverview);
-                    }
-                </li>
-            </ul>
-        </li>
-    </ul>
+    if(courses.Count > 0){
+        <ul class="unstyled">
+            <li>
+                <button class="btn btn-inverse courses-pulldown-button showCourses" type="button">@courses[0].Discipline.Type.Name</button>
+                <ul class="hide-courses unstyled">
+                    <li>
+                        @foreach(DisciplineReviews.Cours course in courses){
+                            @Html.Action("_SingleCourse", course);
+                        }
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
 }
 
   <script>

@@ -17,7 +17,7 @@
         <td><h5>@Model.Helpfulness</h5></td>
         <td>
           <div class="progress progress-info">
-          <div class="bar" style="width: 20%"></div>
+          <div class="bar" style="width: @((Model.Helpfulness-1)*25)%"></div>
       </div>
     </td>
     </tr>
@@ -25,7 +25,7 @@
         <td><h5>@Model.Easiness</h5></td>
          <td>
           <div class="progress progress-info">
-          <div class="bar" style="width: 20%"></div>
+          <div class="bar" style="width: @((Model.Easiness-1)*25)%"></div>
       </div>
     </td>
     </tr>
@@ -33,7 +33,7 @@
         <td><h5>@Model.Interest</h5></td>
          <td>
           <div class="progress progress-info">
-          <div class="bar" style="width: 20%"></div>
+          <div class="bar" style="width: @((Model.Interest-1)*25)%"></div>
       </div>
     </td>
     </tr>
@@ -41,7 +41,7 @@
         <td><h5>@Model.WorkLoad</h5></td>
          <td>
           <div class="progress progress-info">
-          <div class="bar" style="width: 20%"></div>
+          <div class="bar" style="width: @((Model.WorkLoad-1)*25)%"></div>
       </div>
     </td>
     </tr>

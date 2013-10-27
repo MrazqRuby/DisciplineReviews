@@ -1,15 +1,15 @@
-﻿@model DisciplineReviews.Models.CourseOverview
+﻿@model DisciplineReviews.Cours
 
-<button class="btn btn-link courses-pulldown-button showCourses" type="button">@Model.Name</button>
+<button class="btn btn-link courses-pulldown-button showCourses" type="button">@Model.Discipline.DisciplineName</button>
 <ul class="hide-courses unstyled">
     <li>
         <div class="text-info">
             <span class="label label-info">Credits:</span>
-            <span>@Model.Credits</span>
+            <span>@Model.Discipline.DisciplineCredits</span>
             <span class="label label-info">Type:</span>
-            <span>@Model.Type</span>
+            <span>@Model.Discipline.Type.Name</span>
         </div>
-        <button class="btn btn-link courses-pulldown-button go-button" data-course-id="@Model.Id" type="button">Go</button>
+        <button class="btn btn-link courses-pulldown-button go-button" data-course-id="@Model.CourseID" type="button">Go</button>
 
     </li>
 </ul>

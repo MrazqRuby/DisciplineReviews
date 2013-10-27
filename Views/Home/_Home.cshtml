@@ -1,15 +1,10 @@
 @model DisciplineReviews.Models.HomeModel
-<div class="row">
+@*<div class="row">
  		<!-- top IDs/ left menu -->
          <div class="span5">             
      		<ul class="nav nav-list">
     			<li class="nav-header"></li>
     			<li class="active"><a href="#">Top 10 Courses</a></li>
-    			@foreach (DisciplineReviews.Models.CourseOverview courseoverview in Model.top10courses){
-                    <li>Lecturer: @courseoverview.Lecturer</li>
-                    <li>Type: @courseoverview.Type</li>
-                    <li>Credits: @courseoverview.Credits</li>
-                }
 			</ul>
          </div>
          <!-- top teachers -->
@@ -46,4 +41,5 @@
     			<li><a href="#">Gadgetic World</a></li>
 			</ul>
          </div>
- </div>
+ </div>*@
+@Html.Action("_SelectCoursesBy");

@@ -1,5 +1,6 @@
-@model DisciplineReviews.Models.Course
+@model DisciplineReviews.Cours
 
+<input type="hidden" name="courseId" value="@Model.CourseID">
 <ul class="nav nav-tabs">
   <li class="active">
     <a href="#_Overview" class="loadTabContent">Overview</a>
@@ -9,17 +10,21 @@
   
 </ul>
 
-<div id="tab_content">@Html.Action("_CourseReview", Model)</div>
+<div id="tab_content">@Html.Action("_CourseOverview", Model.CourseID)</div>
 
 <script>
 	$(".loadTabContent").on("click", function() {
-		var attr = $(this).attr('href');
+	    var attr = $(this).attr('href');
+	    attr = attr.replace("#_", "");
 		$(this).parent().parent().find("li").removeClass("active");  
             $(this).parent().addClass("active");
 		console.log(attr);
 		$.ajax({
 			type: "POST",
-			url: "/Course/" + attr ,
+			url: "/Course/_Course" + attr,
+			data: {
+			    courseId: $("[name='courseId']").attr("value")
+			},
 			context:this,
 			success: function(msg){
 				$("#tab_content").html(msg);
