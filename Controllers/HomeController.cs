@@ -34,7 +34,14 @@ namespace DisciplineReviews.Controllers
             return PartialView("_Courses", model);
         }
 
-        public ActionResult _SingleCourse(Cours model)
+        [HttpPost]
+        public ActionResult Search(FormCollection form)
+        {
+            var model = BusinessLogic.GetMatchingCourses(form);
+            return PartialView("_SearchResults", model);
+        }
+
+        public ActionResult _SingleCourse(Course model)
         {
             return PartialView("_SingleCourse", model);
         }

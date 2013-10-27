@@ -9,9 +9,6 @@ namespace DisciplineReviews.Controllers
 {
     public class CourseController : Controller
     {
-        //
-        // GET: /Course/
-
         public ActionResult Index(int id)
         {
             //Course course = new Course();
@@ -51,6 +48,15 @@ namespace DisciplineReviews.Controllers
         public ActionResult _CourseMaterials(int courseId)
         {
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult SubmitReview(FormCollection form)
+        {
+            var Easy = form["Easiness"];
+            int Id = Convert.ToInt32(form["courseId"]);
+            var reviews = BusinessLogic.GetReviews(courseId);
+            return PartialView("_CourseReviews", courseId);
         }
     }
 }

@@ -9,7 +9,8 @@
                 <ul class="hide-courses unstyled">
                     <li>
                         @foreach(DisciplineReviews.Cours course in courses){
-                            @Html.Action("_SingleCourse", course);
+                            var model = DisciplineReviews.Controllers.BusinessLogic.MapCourse(course);
+                            @Html.Action("_SingleCourse", model);
                         }
                     </li>
                 </ul>

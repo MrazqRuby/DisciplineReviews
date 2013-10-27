@@ -1,15 +1,41 @@
-﻿@model DisciplineReviews.Cours
+﻿@model DisciplineReviews.Models.Course
 
-<button class="btn btn-link courses-pulldown-button showCourses" type="button">@Model.Discipline.DisciplineName</button>
+<button class="btn btn-link courses-pulldown-button showCourses" type="button">
+    @Model.CourseName
+    @if(Model.Easiness < 2.2M){
+        <img src="/img/course_hard.png" alt="Smiley face" height="40" width="40"/> 
+    }
+    else if (Model.Easiness >= 4.1M)
+    {
+        <img src="/img/course_easy.gif" alt="Smiley face" height="50" width="50"/>         
+    }
+    @if (Model.Interest < 2.2M )
+    {
+        <img src="/img/course_boring.png" alt="Smiley face" height="50" width="50"/>         
+    }
+    else if (Model.Interest >= 4.1M)
+    {
+        <img src="/img/course_interest.png" alt="Smiley face" height="50" width="50"/> 
+    }
+    @if (Model.Helpfulness < 2.2M )
+    {
+        <img src="/img/course_useless.png" alt="Smiley face" height="40" width="40"/>         
+    }
+    else if (Model.Helpfulness >= 4.1M)
+    {
+        <img src="/img/course_useful.jpg" alt="Smiley face" height="50" width="50"/> 
+    }
+</button>
+
 <ul class="hide-courses unstyled">
     <li>
         <div class="text-info">
             <span class="label label-info">Credits:</span>
-            <span>@Model.Discipline.DisciplineCredits</span>
+            <span>@Model.Credits</span>
             <span class="label label-info">Type:</span>
-            <span>@Model.Discipline.Type.Name</span>
+            <span>@Model.Type</span>
         </div>
-        <button class="btn btn-link courses-pulldown-button go-button" data-course-id="@Model.CourseID" type="button">Go</button>
+        <button class="btn btn-link courses-pulldown-button go-button" data-course-id="@Model.Id" type="button">Go</button>
 
     </li>
 </ul>

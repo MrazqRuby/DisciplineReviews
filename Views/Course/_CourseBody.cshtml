@@ -1,12 +1,12 @@
 @model DisciplineReviews.Cours
 
-<input type="hidden" name="courseId" value="@Model.CourseID">
+<input type="hidden" name="courseId" id="courseId" value="@Model.CourseID">
 <ul class="nav nav-tabs">
   <li class="active">
-    <a href="#_Overview" class="loadTabContent">Overview</a>
+    <a href="#_Overview" class="loadTabContent"><img src="/img/description.png" height="30" width="30"/>Overview</a>
   </li>
-  <li><a href="#_Reviews" class="loadTabContent">Reviews</a></li>
-  <li><a href="#_Materials" class="loadTabContent">Materials</a></li>
+  <li><a href="#_Reviews" class="loadTabContent"><img src="/img/reviews.png" height="30" width="30"/>Reviews</a></li>
+  <li><a href="#_Materials" class="loadTabContent"><img src="/img/materials_icon.png" height="30" width="30"/>Materials</a></li>
   
 </ul>
 
@@ -23,7 +23,7 @@
 			type: "POST",
 			url: "/Course/_Course" + attr,
 			data: {
-			    courseId: $("[name='courseId']").attr("value")
+			    courseId: $("#courseId").attr("value")
 			},
 			context:this,
 			success: function(msg){

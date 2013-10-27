@@ -3,12 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace DisciplineReviews.Controllers
 {
     public class BusinessLogic
     {
         static private DisciplineReviewsEntities context = new DisciplineReviewsEntities();
+
+        static public List<Cours> GetMatchingCourses(FormCollection form)
+        {
+            var name = form["Name"];
+            var retval = (from c in context.Courses
+                          where c.Discipline.DisciplineName.StartsWith(name)
+                          select c).ToList();
+            return retval;
+        }
 
         static public List<List<Cours>> GetAllCourses()
         {
