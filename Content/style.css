@@ -10,6 +10,7 @@ nav
 }
 
 #rating-table,
+#rating-table-teacher,
 .search-bar
 {
 	float: right;
@@ -20,14 +21,16 @@ nav
 	margin-top: 10px;
 }
 
-#rating-table
+#rating-table,
+#rating-table-teacher
 {
 	margin-top: -190px;
 	width: 200px;
     height: 200px;
 }
 
-#rating-table td
+#rating-table td,
+#rating-table0teacher td
 {
 	width: 96px;
 	height: 20px;

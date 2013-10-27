@@ -53,10 +53,23 @@ namespace DisciplineReviews.Controllers
         [HttpPost]
         public ActionResult SubmitReview(FormCollection form)
         {
-            var Easy = form["Easiness"];
-            int Id = Convert.ToInt32(form["courseId"]);
-            var reviews = BusinessLogic.GetReviews(Id);
-            return PartialView("_CourseReviews", Id);
+            CourseReview newreview = new CourseReview();
+            newreview.CourseID = Convert.ToInt32(form["courseId"]);
+            newreview.Easyness = Convert.ToInt32(form["Easiness"]);
+            newreview.Clarity = Convert.ToInt32(form["Clarity"]);
+            newreview.Interests = Convert.ToInt32(form["Interest"]);
+            newreview.Workload = Convert.ToInt32(form["Workload"]);
+            newreview.Grade = Convert.ToInt32(form["Grade"]);
+            newreview.Comment = form["Comment"];
+            newreview.CourseUp = 0;
+            newreview.CourseDown = 0;
+            newreview.UserID = BusinessLogic.GetUserIdByName(form["User"]);
+            newreview.Date = DateTime.Now;
+
+            BusinessLogic.AddNewCourseReview(newreview);
+
+            var reviews = BusinessLogic.GetReviews(Convert.ToInt32(form["courseId"]));
+            return PartialView("_CourseReviews", reviews);
         }
     }
 }
